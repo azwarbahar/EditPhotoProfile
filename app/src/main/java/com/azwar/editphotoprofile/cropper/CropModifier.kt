@@ -93,29 +93,6 @@ fun Modifier.crop(
             )
         }
 
-//        val touchModifier = Modifier.pointerInput(*keys) {
-//            detectMotionEventsAsList(
-//                onDown = {
-//                    coroutineScope.launch {
-//                        cropState.onDown(it)
-//                        onDown?.invoke(cropState.cropData)
-//                    }
-//                },
-//                onMove = {
-//                    coroutineScope.launch {
-//                        cropState.onMove(it)
-//                        onMove?.invoke(cropState.cropData)
-//                    }
-//                },
-//                onUp = {
-//                    coroutineScope.launch {
-//                        cropState.onUp(it)
-//                        onUp?.invoke(cropState.cropData)
-//                    }
-//                }
-//            )
-//        }
-
         val graphicsModifier = Modifier.graphicsLayer {
             this.update(cropState)
         }
@@ -124,7 +101,6 @@ fun Modifier.crop(
             clipToBounds()
                 .then(tapModifier)
                 .then(transformModifier)
-//                .then(touchModifier)
                 .then(graphicsModifier)
         )
     },
